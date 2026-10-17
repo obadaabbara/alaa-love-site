@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إلى آلاء.. حب حياتي | من حمزة</title>
+    <!-- Google Fonts: Tajawal & Amiri -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,7 +14,7 @@
             --gold: #d4af37;
             --gold-light: #f3e5ab;
             --bg-dark: #120309;
-            --bg-card: rgba(40, 10, 20, 0.7);
+            --bg-card: rgba(40, 10, 20, 0.75);
             --text-light: #fff5f8;
             --text-gold: #f9e29c;
         }
@@ -31,11 +32,12 @@
             color: var(--text-light);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(138, 21, 56, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(138, 21, 56, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.18) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
+        /* Floating Background Hearts */
         #hearts-container {
             position: fixed;
             top: 0;
@@ -49,14 +51,14 @@
 
         .floating-heart {
             position: absolute;
-            color: rgba(232, 165, 184, 0.4);
+            color: rgba(232, 165, 184, 0.45);
             animation: floatUp linear infinite;
         }
 
         @keyframes floatUp {
             0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.8; }
+            20% { opacity: 0.85; }
+            80% { opacity: 0.85; }
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
@@ -68,14 +70,15 @@
             z-index: 2;
         }
 
+        /* Hero Header */
         header {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         .hero-badge {
@@ -84,30 +87,31 @@
             color: var(--gold-light);
             padding: 8px 24px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 25px;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
         .hero-title {
             font-family: 'Amiri', serif;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: #fff;
-            text-shadow: 0 0 20px rgba(184, 34, 77, 0.6);
+            text-shadow: 0 0 25px rgba(184, 34, 77, 0.7);
             margin-bottom: 15px;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--rose);
-            max-width: 700px;
+            max-width: 650px;
             margin-bottom: 40px;
             line-height: 1.8;
         }
 
+        /* Envelope Action Button */
         .envelope-section {
-            margin: 40px 0;
+            margin: 20px 0;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -118,7 +122,7 @@
             border: 2px solid var(--gold);
             color: #fff;
             padding: 16px 36px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -129,18 +133,20 @@
         }
 
         .envelope-btn:hover {
-            transform: translateY(-5deg) scale(1.03);
+            transform: translateY(-4px) scale(1.03);
             box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
         }
 
+        /* MODAL FIXES FOR THE LETTER (PERFECT RESPONSIVE BOUNDS) */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
             justify-content: center;
@@ -148,7 +154,7 @@
             padding: 20px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .modal-overlay.active {
@@ -157,65 +163,104 @@
         }
 
         .letter-card {
-            background: #230813;
+            background: linear-gradient(160deg, #2a0a16 0%, #17040b 100%);
             border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 650px;
+            border-radius: 24px;
+            padding: 30px 25px;
+            max-width: 620px;
             width: 100%;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            max-height: 85vh; /* Prevents overflow off screen */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25), 0 0 30px rgba(138, 21, 56, 0.6);
             position: relative;
-            transform: scale(0.8);
-            transition: transform 0.4s ease;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .modal-overlay.active .letter-card {
             transform: scale(1);
         }
 
-        .letter-header {
-            font-family: 'Amiri', serif;
-            font-size: 2.2rem;
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
             color: var(--gold-light);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-            text-align: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10;
         }
 
+        .close-btn:hover {
+            background: var(--gold);
+            color: #120309;
+        }
+
+        .letter-header {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--gold-light);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* Scrollable Letter Body */
         .letter-body {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             line-height: 2;
-            color: #ffffff;
+            color: var(--text-light);
             text-align: justify;
-            margin-bottom: 30px;
+            overflow-y: auto;
+            padding-right: 8px;
+            padding-left: 8px;
+            margin-bottom: 20px;
             white-space: pre-line;
+            font-family: 'Amiri', serif;
+        }
+
+        /* Custom Scrollbar for Modal Body */
+        .letter-body::-webkit-scrollbar {
+            width: 5px;
+        }
+        .letter-body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .letter-body::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
         }
 
         .letter-footer {
             text-align: left;
             font-family: 'Amiri', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--gold);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 15px;
+            flex-shrink: 0;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
+        /* Counter Section */
         .counter-section {
             background: var(--bg-card);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 25px;
             padding: 40px 20px;
-            margin: 60px 0;
+            margin: 40px 0 60px;
             text-align: center;
             backdrop-filter: blur(10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -231,16 +276,16 @@
 
         .counter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
             margin-top: 30px;
         }
 
         .counter-box {
             background: rgba(138, 21, 56, 0.4);
-            border: 1px solid rgba(232, 165, 184, 0.2);
+            border: 1px solid rgba(232, 165, 184, 0.25);
             padding: 20px 10px;
-            border-radius: 15px;
+            border-radius: 18px;
         }
 
         .counter-number {
@@ -251,13 +296,14 @@
         }
 
         .counter-label {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--rose);
             margin-top: 5px;
         }
 
+        /* Timeline Section */
         .timeline-section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .timeline {
@@ -287,9 +333,9 @@
         .timeline-item::after {
             content: '❤️';
             position: absolute;
-            width: 30px;
-            height: 30px;
-            right: -15px;
+            width: 32px;
+            height: 32px;
+            right: -16px;
             background: var(--bg-dark);
             border: 2px solid var(--gold);
             border-radius: 50%;
@@ -298,19 +344,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         .left { left: 0; }
         .right { left: 50%; }
-
-        .right::after { right: auto; left: -15px; }
+        .right::after { right: auto; left: -16px; }
 
         .timeline-content {
             padding: 25px;
             background: var(--bg-card);
             border: 1px solid rgba(232, 165, 184, 0.2);
-            border-radius: 15px;
+            border-radius: 18px;
             backdrop-filter: blur(5px);
         }
 
@@ -325,15 +370,18 @@
             font-size: 1.3rem;
             color: #fff;
             margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .timeline-desc {
             color: #e0d0d5;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
+        /* Reasons Section */
         .reasons-section {
-            padding: 60px 0;
+            padding: 50px 0;
         }
 
         .reasons-grid {
@@ -353,9 +401,9 @@
         }
 
         .reason-card:hover {
-            transform: translateY(-8deg);
+            transform: translateY(-6deg);
             border-color: var(--gold);
-            box-shadow: 0 10px 25px rgba(138, 21, 56, 0.4);
+            box-shadow: 0 12px 25px rgba(138, 21, 56, 0.4);
         }
 
         .reason-icon {
@@ -367,6 +415,7 @@
             color: var(--gold-light);
             font-size: 1.3rem;
             margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .reason-desc {
@@ -374,15 +423,16 @@
             line-height: 1.6;
         }
 
+        /* Surprise Button */
         .surprise-section {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .surprise-btn {
             background: linear-gradient(135deg, var(--gold), #b8860b);
             color: #1a050d;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: bold;
             padding: 18px 45px;
             border: none;
@@ -399,26 +449,33 @@
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             margin-top: 60px;
             color: var(--rose);
+            font-size: 1.05rem;
         }
 
         @media screen and (max-width: 768px) {
-            .hero-title { font-size: 2.6rem; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.15rem; }
+            .letter-card { padding: 25px 18px; max-height: 80vh; }
+            .letter-header { font-size: 1.6rem; }
+            .letter-body { font-size: 1.05rem; line-height: 1.8; }
             .timeline::after { right: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; }
             .timeline-item.right { left: 0%; }
-            .timeline-item::after { right: auto; left: 16px; }
-            .right::after { left: 16px; }
+            .timeline-item::after { right: auto; left: 15px; }
+            .right::after { left: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Background Animated Hearts -->
     <div id="hearts-container"></div>
 
+    <!-- Header / Hero Section -->
     <header>
         <div class="hero-badge">✨ هدية خاصة من حمزة ✨</div>
         <h1 class="hero-title">إلى آلاء.. حكايتي وأجمل أميرة</h1>
@@ -431,27 +488,31 @@
         </div>
     </header>
 
-    <div class="modal-overlay" id="letterModal">
-        <div class="letter-card">
+    <!-- Modal Envelope / Letter Dialog -->
+    <div class="modal-overlay" id="letterModal" onclick="handleModalClick(event)">
+        <div class="letter-card" id="letterCard">
             <button class="close-btn" onclick="closeLetter()">&times;</button>
             <div class="letter-header">رسالة من قلب حمزة 💌</div>
             <div class="letter-body">
 أميرتي الغالية آلاء..
 
-لم تكيّف الأيام قيمتها إلا بعد أن أصبحتِ أنتِ فيها، ولم يَعرف قلبي معنى السكينة والدفء إلا في حضوركِ.
+لم تعرف الأيام قيمتها إلا بعد أن أصبحتِ أنتِ فيها، ولم يَعرف قلبي معنى السكينة والدفء إلا في حضوركِ.
 
 هذا الموقع الصغير هو إهداء بسيط منّي ليعبر لكِ عن شيء قليل جداً ممّا أحمله لكِ في صدري. أنتِ لستِ فقط حبيبتي، بل صديقتي الوفية، ووطني الدافئ، وسبب ابتسامتي في كل يوم.
 
-أوعدكِ أن أظل بجانبكِ، أسانيدكِ، وأحبكِ أكثر في كل لحظة قادمة.
+أعدكِ أن أظل بجانبكِ، أسانيدكِ، وأحبكِ أكثر في كل لحظة قادمة.
             </div>
             <div class="letter-footer">مُحبكِ دائماً: حمزة ❤️</div>
         </div>
     </div>
 
+    <!-- Main Content Container -->
     <div class="container">
+
+        <!-- Love Counter Section -->
         <section class="counter-section">
             <h2 class="section-title">عدّاد حبنا المستمر ⏳</h2>
-            <p style="color: var(--rose);">نحسبُ كل لحظة منذ انطلاق حكايتنا في 16 أكتوبر 2026</p>
+            <p style="color: var(--rose); font-size: 1.05rem;">نحسبُ كل لحظة معاً منذ 16 أكتوبر 2026 - الساعة 9:00 مساءً</p>
             <div class="counter-grid">
                 <div class="counter-box">
                     <div class="counter-number" id="days">0</div>
@@ -472,6 +533,7 @@
             </div>
         </section>
 
+        <!-- Timeline Section -->
         <section class="timeline-section">
             <h2 class="section-title">محطات في ذاكرتي 📖</h2>
             <div class="timeline">
@@ -499,6 +561,7 @@
             </div>
         </section>
 
+        <!-- Reasons Section -->
         <section class="reasons-section">
             <h2 class="section-title">لماذا أحبكِ يا آلاء؟ 🌹</h2>
             <div class="reasons-grid">
@@ -520,16 +583,21 @@
             </div>
         </section>
 
+        <!-- Surprise Section -->
         <section class="surprise-section">
             <button class="surprise-btn" onclick="triggerSurprise()">اضغطي هنا يا آلاء ❤️</button>
         </section>
+
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>صُنع بكل حب وشغف من حمزة لعينيكِ يا آلاء ✨</p>
     </footer>
 
+    <!-- JavaScript Scripting -->
     <script>
+        // Floating Background Hearts Generator
         function createHearts() {
             const container = document.getElementById('hearts-container');
             const hearts = ['❤️', '💖', '💗', '💕', '✨'];
@@ -538,23 +606,32 @@
                 heart.className = 'floating-heart';
                 heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
                 heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                heart.style.fontSize = (Math.random() * 14 + 14) + 'px';
                 container.appendChild(heart);
             }
         }
         createHearts();
 
+        // Modal Controllers
         function openLetter() {
             document.getElementById('letterModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent main page scrolling when open
         }
 
         function closeLetter() {
             document.getElementById('letterModal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // تاريخ البداية: 16 أكتوبر 2026 الساعة 9 مساءً
+        function handleModalClick(e) {
+            if (e.target.id === 'letterModal') {
+                closeLetter();
+            }
+        }
+
+        // Start Date: October 16, 2026 at 9:00 PM
         const startDate = new Date('2026-10-16T21:00:00');
 
         function updateCounter() {
@@ -582,15 +659,16 @@
         setInterval(updateCounter, 1000);
         updateCounter();
 
+        // Surprise Burst Action
         function triggerSurprise() {
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 45; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.innerText = '❤️';
                     heart.style.position = 'fixed';
                     heart.style.left = Math.random() * 100 + 'vw';
                     heart.style.top = '100vh';
-                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    heart.style.fontSize = (Math.random() * 22 + 18) + 'px';
                     heart.style.transition = 'transform 2s ease-out, opacity 2s';
                     heart.style.zIndex = '9999';
                     document.body.appendChild(heart);
@@ -601,9 +679,11 @@
                     }, 50);
 
                     setTimeout(() => heart.remove(), 2000);
-                }, i * 30);
+                }, i * 35);
             }
-            alert('حمزة يحبكِ جداً يا آلاء! ❤️✨');
+            setTimeout(() => {
+                alert('حمزة   يحبكِ جداً يا آلاء! ❤️✨');
+            }, 300);
         }
     </script>
 </body>
